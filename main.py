@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for, flash, redirect
+import git
+from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm
 from flask_behind_proxy import FlaskBehindProxy
 from flask_debugtoolbar import DebugToolbarExtension
@@ -25,6 +26,16 @@ def register():
 @app.route("/about")
 def about():
     return render_template('about.html', subtitle='About Page', text='This is the about page')
+
+@app.route("/update_server", methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('/home/angelchuk/week3website')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
   
 if __name__ == '__main__':               # this should always be at the end
     app.run(debug=True, host="0.0.0.0")

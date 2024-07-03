@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> About Page </title>
+    <link rel="stylesheet" href="/static/main.css" type="text/css">
+    <style>
+        body { background-color:#fff; }
+        td { border: 1px dashed #333; padding:5px; }
+        th { background-color:#ddd; color:#333; }
+    </style>
+</head>
+
+<body>
+{% extends "layout.html" %}
+{% block content %}
+    <h2>{{ subtitle }}</h2>
+    <p>{{ text }}</p>
+{% endblock content %}
+
+</body>
+
+</html>

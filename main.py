@@ -2,7 +2,7 @@ import git
 from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm
 from flask_behind_proxy import FlaskBehindProxy
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -24,8 +24,8 @@ class User(db.Model):
 with app.app_context():
   db.create_all()
 
-app.debug = True
-toolbar = DebugToolbarExtension(app)
+# app.debug = True
+# toolbar = DebugToolbarExtension(app)
 
 @app.route("/")                          # this tells you the URL the method below is related to
 @app.route("/home")
